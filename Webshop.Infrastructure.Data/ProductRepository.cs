@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Webshop.Core.DomainService;
 using Webshop.Core.Entity;
@@ -15,29 +16,34 @@ namespace Webshop.Infrastructure.Data
 
         public Product CreateProduct(Product product)
         {
-            var createdProduct = _ctx.Product.Add(product);
+            var createdProduct = _ctx.Product.Add(product).Entity;
             _ctx.SaveChanges();
             return createdProduct;
         }
 
         public Product DeleteProduct(Product product)
         {
-            throw new NotImplementedException();
+            var deletedProduct = _ctx.Product.Remove(product).Entity;
+            _ctx.SaveChanges();
+            return deletedProduct;
         }
 
         public Product ReadProductByID(int id)
         {
-            throw new NotImplementedException();
+            return _ctx.Product.FirstOrDefault( p => p.Id == id);
+            
         }
 
         public IEnumerable<Product> ReadProducts()
         {
-            throw new NotImplementedException();
+            return _ctx.Product;
         }
 
         public Product UpdateProduct(Product product)
         {
-            throw new NotImplementedException();
+            _ctx.Update(product);
+            _ctx.SaveChanges();
+            return product;
         }
     }
 }
