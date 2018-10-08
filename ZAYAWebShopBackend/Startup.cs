@@ -25,7 +25,7 @@ namespace ZAYAWebShopBackend
         IHostingEnvironment _env { get; set; }
         public IConfiguration _conf { get; }
 
-        public Startup(IHostingEnvironment env, IConfiguration con)
+        public Startup(IHostingEnvironment env)
         {
             _env = env;
             //_conf = con;
@@ -37,8 +37,6 @@ namespace ZAYAWebShopBackend
             _conf = builder.Build();
         }
 
-
-       
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
