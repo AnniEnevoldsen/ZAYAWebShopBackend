@@ -28,7 +28,13 @@ namespace ZAYAWebShopBackend
         public Startup(IHostingEnvironment env, IConfiguration con)
         {
             _env = env;
-            _conf = con;
+            //_conf = con;
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+            _conf = builder.Build();
         }
 
 
