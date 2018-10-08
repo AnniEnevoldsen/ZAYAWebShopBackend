@@ -88,6 +88,12 @@ namespace ZAYAWebShopBackend
             else
             {
                 app.UseHsts();
+                
+                using (var scope = app.ApplicationServices.CreateScope())
+                {
+                    var ctx = scope.ServiceProvider.GetService<WebShopAppContext>();
+                    ctx.Database.EnsureCreated();
+                }
             }
 
             app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
