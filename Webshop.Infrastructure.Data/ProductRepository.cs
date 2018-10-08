@@ -15,7 +15,7 @@ namespace Webshop.Infrastructure.Data
 
         public Product CreateProduct(Product product)
         {
-            var createdProduct = _ctx.Product.Add(product);
+            var createdProduct = _ctx.Product.Add(product).Entity;
             _ctx.SaveChanges();
             return createdProduct;
         }
