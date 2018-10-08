@@ -23,7 +23,7 @@ namespace ZAYAWebShopBackend
     public class Startup
     {
         IHostingEnvironment _env { get; set; }
-        public IConfiguration Configuration { get; }
+        public IConfiguration _conf { get; }
 
         public Startup(IHostingEnvironment env)
         {
@@ -40,14 +40,13 @@ namespace ZAYAWebShopBackend
 
             if (_env.IsDevelopment())
             {
-                 /*  services.AddDbContext<WebShopAppContext>(
-                    option => option.UseSqlite("Data Source=WebShopApp.db")); */
-                    
+                  services.AddDbContext<WebShopAppContext>(
+                    option => option.UseSqlite("Data Source=WebShopApp.db"));     
             }
             else if(_env.IsProduction())
             {
-               /* services.AddDbContext<WebShopAppContext>(
-                    option => option.U)*/
+                services.AddDbContext<WebShopAppContext>(
+                    option => option.UseSqlServer(_conf.GetConnectionString("DefaultConnection")));
                 
             }
 
