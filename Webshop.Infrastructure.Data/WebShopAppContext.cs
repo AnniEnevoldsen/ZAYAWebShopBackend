@@ -11,6 +11,7 @@ namespace Webshop.Infrastructure.Data
     {
        // public WebShopAppContext(DbContextOptions<WebShopAppContext> opt) : base(opt) { }
 
+
         public DbSet<Product> Product { get; set; }
         public DbSet<Customer> Customer { get; set; }
 

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -39,8 +40,8 @@ namespace ZAYAWebShopBackend
 
             if (_env.IsDevelopment())
             {
-                /* services.AddDbContext<WebShopAppContext>(
-                    option => option.Use("Data Source=WebShopApp.db"));  */
+                 /*  services.AddDbContext<WebShopAppContext>(
+                    option => option.UseSqlite("Data Source=WebShopApp.db")); */
                     
             }
             else if(_env.IsProduction())
@@ -74,6 +75,11 @@ namespace ZAYAWebShopBackend
             {
                 
                 app.UseDeveloperExceptionPage();
+                using (var scope = app.ApplicationServices.CreateScope())
+                {
+                    var ctx = scope.ServiceProvider.GetService<WebShopAppContext>();
+                    
+                }
             }
             else
             {
