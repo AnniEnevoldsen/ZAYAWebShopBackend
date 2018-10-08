@@ -65,6 +65,7 @@ namespace ZAYAWebShopBackend
                 options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             });
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -77,7 +78,7 @@ namespace ZAYAWebShopBackend
                 using (var scope = app.ApplicationServices.CreateScope())
                 {
                     var ctx = scope.ServiceProvider.GetService<WebShopAppContext>();
-                    
+                    DBInitializer.SeedDb(ctx);
                 }
             }
             else
