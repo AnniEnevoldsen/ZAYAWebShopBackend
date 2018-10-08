@@ -44,7 +44,7 @@ namespace Webshop.Core.ApplicationService.implementation
             editCust.Address = cust.Address;
             editCust.Products = cust.Products;
 
-            return editCust;
+            return _customerRepository.UpdateCustomer(editCust);
         }
     }
 }

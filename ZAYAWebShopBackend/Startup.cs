@@ -25,9 +25,10 @@ namespace ZAYAWebShopBackend
         IHostingEnvironment _env { get; set; }
         public IConfiguration _conf { get; }
 
-        public Startup(IHostingEnvironment env)
+        public Startup(IHostingEnvironment env, IConfiguration con)
         {
             _env = env;
+            _conf = con;
         }
 
 
@@ -45,9 +46,12 @@ namespace ZAYAWebShopBackend
             }
             else if(_env.IsProduction())
             {
-                services.AddDbContext<WebShopAppContext>(
+             /*   services.AddDbContext<WebShopAppContext>(
                     option => option.UseSqlServer(_conf.GetConnectionString("DefaultConnection")));
-                
+               */
+                //use azure SQL Database
+                services.AddDbContext<WebShopAppContext> (
+                    opt => opt.UseSqlServer(_conf.GetConnectionString("defaultConnection")));
             }
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
