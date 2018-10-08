@@ -5,6 +5,18 @@ VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZAYAWebShopBackend", "ZAYAWebShopBackend\ZAYAWebShopBackend.csproj", "{F9E8A4AC-82EB-49E7-81D1-687BAFC0197D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{DB7EFBE5-F42F-4669-99AE-305C4E9C7A1C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{752C3A9F-B2C2-44AB-BB37-FE4F8BF12B70}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GUI", "GUI", "{A43C499D-40A1-465F-8CFC-331E3BDE9B71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webshop.Infrastructure.Data", "Webshop.Infrastructure.Data\Webshop.Infrastructure.Data.csproj", "{456B381A-6AA5-48F8-B3AD-35B7FDC79588}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webshop.Core", "Webshop.Core\Webshop.Core.csproj", "{D26ECD7F-216B-47F5-83FE-56AB6FA4A100}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Webshop.Core.Entity", "Webshop.Core.Entity\Webshop.Core.Entity.csproj", "{788C655B-4DD4-4C00-B2BC-DF6643C837DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +27,27 @@ Global
 		{F9E8A4AC-82EB-49E7-81D1-687BAFC0197D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9E8A4AC-82EB-49E7-81D1-687BAFC0197D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9E8A4AC-82EB-49E7-81D1-687BAFC0197D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{456B381A-6AA5-48F8-B3AD-35B7FDC79588}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{456B381A-6AA5-48F8-B3AD-35B7FDC79588}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{456B381A-6AA5-48F8-B3AD-35B7FDC79588}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{456B381A-6AA5-48F8-B3AD-35B7FDC79588}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D26ECD7F-216B-47F5-83FE-56AB6FA4A100}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D26ECD7F-216B-47F5-83FE-56AB6FA4A100}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D26ECD7F-216B-47F5-83FE-56AB6FA4A100}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D26ECD7F-216B-47F5-83FE-56AB6FA4A100}.Release|Any CPU.Build.0 = Release|Any CPU
+		{788C655B-4DD4-4C00-B2BC-DF6643C837DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{788C655B-4DD4-4C00-B2BC-DF6643C837DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{788C655B-4DD4-4C00-B2BC-DF6643C837DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{788C655B-4DD4-4C00-B2BC-DF6643C837DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F9E8A4AC-82EB-49E7-81D1-687BAFC0197D} = {A43C499D-40A1-465F-8CFC-331E3BDE9B71}
+		{456B381A-6AA5-48F8-B3AD-35B7FDC79588} = {752C3A9F-B2C2-44AB-BB37-FE4F8BF12B70}
+		{D26ECD7F-216B-47F5-83FE-56AB6FA4A100} = {DB7EFBE5-F42F-4669-99AE-305C4E9C7A1C}
+		{788C655B-4DD4-4C00-B2BC-DF6643C837DC} = {DB7EFBE5-F42F-4669-99AE-305C4E9C7A1C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F8E0F39F-9013-4808-A33E-E1E9B70BE1BF}
