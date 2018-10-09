@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Webshop.Core.DomainService;
 using Webshop.Core.Entity;
+using Webshop.Core.Entity.Entities;
 
 namespace Webshop.Core.ApplicationService.implementation
 {
@@ -38,6 +39,21 @@ namespace Webshop.Core.ApplicationService.implementation
         public Product DeleteProduct(Product product)
         {
             return _ProductRepo.DeleteProduct(product);
+        }
+
+        public List<Product> GetFilteredProducts(Filter filter)
+        {
+            if (filter.CurrentPage < 0 || filter.ItemsPrPage < 0)
+            {
+                throw new InvalidDataException("CurrentPage and ItemsPrPage must be above 0");
+            }
+
+            if ((filter.CurrentPage - 1 * filter.ItemsPrPage) >=  _ProductRepo.Count())
+            {
+                throw new InvalidDataException("CurrentPage too high, Index out of bounds");
+            }
+           
+            return _ProductRepo.ReadProducts(filter).ToList();
         }
 
         public Product ReadProductByID(int id)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Webshop.Core.Entity;
+using Webshop.Core.Entity.Entities;
 
 namespace Webshop.Core
 {
@@ -14,6 +15,7 @@ namespace Webshop.Core
         //Read
         List<Product> ReadProducts();
         Product ReadProductByID(int id);
+        List<Product> GetFilteredProducts(Filter filter);
 
         //Update
         Product UpdateProduct(Product product);

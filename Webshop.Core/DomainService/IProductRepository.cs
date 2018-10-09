@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Webshop.Core.Entity;
+using Webshop.Core.Entity.Entities;
 
 namespace Webshop.Core.DomainService
 {
@@ -11,7 +12,7 @@ namespace Webshop.Core.DomainService
         Product CreateProduct(Product product);
 
         //Read
-        IEnumerable<Product> ReadProducts();
+        IEnumerable<Product> ReadProducts(Filter filter = null);
         Product ReadProductByID(int id);
 
         //Update
@@ -19,5 +20,7 @@ namespace Webshop.Core.DomainService
 
         //Delete
         Product DeleteProduct(Product product);
+
+        int Count();
     }
 }

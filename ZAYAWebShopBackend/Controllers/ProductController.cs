@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Webshop.Core;
 using Webshop.Core.Entity;
+using Webshop.Core.Entity.Entities;
 
 namespace ZAYAWebShopBackend.Controllers
 {
@@ -23,9 +24,18 @@ namespace ZAYAWebShopBackend.Controllers
 
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<Product>> Get()
+        public ActionResult<IEnumerable<Product>> Get([FromQuery] Filter filter)
         {
-            return _productService.ReadProducts();
+            try
+            {
+                return Ok(_productService.GetFilteredProducts(filter));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            // remember to add: ?CurrentPage=1&ItemsPrPage=3 
+            //the pagenumber and itemsprpage can be changed.
         }
 
         // GET api/values/5

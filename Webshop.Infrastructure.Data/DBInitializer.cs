@@ -14,17 +14,34 @@ namespace Webshop.Infrastructure.Data
 
             var product = ctx.Product.Add(new Product()
             {
-                ProductName = "LadyShoes"
+                ProductName = "LadyShoes",
+                Picture = "http://fp2w.org/assets/ext/blob.jpg",
+                Gender = "Male",
+                Type = "Glasses"
+            }).Entity;
+
+            var product2 = ctx.Product.Add(new Product()
+            {
+                ProductName = "Nighttime",
+                Picture = "http://fp2w.org/assets/ext/blob.jpg"
+            }).Entity;
+
+            var product3 = ctx.Product.Add(new Product()
+            {
+                ProductName = "Hello"
+            }).Entity;
+
+            var product4 = ctx.Product.Add(new Product()
+            {
+                ProductName = "Bugger"
             }).Entity;
 
             ctx.Customer.Add(new Customer()
             {
                 Name = "Heeeels",
-                Products = product
-                
+                Products = product              
             });
 
-            
             ctx.SaveChanges();
         }
     }
