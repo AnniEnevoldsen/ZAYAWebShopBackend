@@ -28,6 +28,10 @@ namespace ZAYAWebShopBackend.Controllers
         {
             try
             {
+                if (filter.CurrentPage == 0 && filter.ItemsPrPage == 0)
+                {
+                    return Ok(_productService.ReadProducts());
+                }
                 return Ok(_productService.GetFilteredProducts(filter));
             }
             catch (Exception e)
