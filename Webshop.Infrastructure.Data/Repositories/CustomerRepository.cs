@@ -19,7 +19,7 @@ namespace Webshop.Infrastructure.Data
 
         public Customer CreateCustomer(Customer customer)
         {
-            _ctx.Attach(customer).State = EntityState.Added;
+            _ctx.Attach(customer).State =EntityState.Added ;
             _ctx.SaveChanges();
 
             return customer;
@@ -34,12 +34,12 @@ namespace Webshop.Infrastructure.Data
 
         public Customer ReadCustomerById(int id)
         {
-            return _ctx.Customer.FirstOrDefault(c => c.Id == id);
+            return _ctx.Customer.Include(customer => customer.Products).FirstOrDefault(c => c.Id == id);
         }
 
         public IEnumerable<Customer> ReadCustomers()
         {
-            return _ctx.Customer;
+            return _ctx.Customer.Include(customer => customer.Products);
         }
 
         public Customer UpdateCustomer(Customer customer)

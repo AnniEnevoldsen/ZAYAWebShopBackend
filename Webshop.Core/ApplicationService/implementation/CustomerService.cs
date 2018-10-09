@@ -11,19 +11,26 @@ namespace Webshop.Core.ApplicationService.implementation
     public class CustomerService : ICustomerService
     {
         private readonly ICustomerRepository _customerRepository;
-        public CustomerService(ICustomerRepository CustomerRepository)
+        private readonly IProductRepository _productRepository;
+        public CustomerService(ICustomerRepository CustomerRepository, IProductRepository ProductRepository)
         {
             _customerRepository = CustomerRepository;
+            _productRepository = ProductRepository;
         }
 
         public Customer AddCustomer(Customer cust)
         {
+            
             if (cust.Address == "" || cust.Address == null )
                 throw new InvalidDataException("To create a customer you need an address");
             if (cust.Name == "" || cust.Name == null)
                 throw new InvalidDataException("To create a customer you need a name");
 
-            return _customerRepository.CreateCustomer(cust);
+            var customer = _customerRepository.CreateCustomer(cust);
+            if (cust.Products != null) {
+                customer.Products = _productRepository.ReadProductByID(customer.Products.Id);
+            }
+            return customer;
         }
 
         public Customer DeleteCustomer(Customer cust)

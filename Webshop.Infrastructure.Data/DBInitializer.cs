@@ -12,15 +12,19 @@ namespace Webshop.Infrastructure.Data
             ctx.Database.EnsureDeleted();
             ctx.Database.EnsureCreated();
 
-            ctx.Customer.Add(new Customer()
-            {
-                Name = "Heeeels"
-            });
-
-            ctx.Product.Add(new Product()
+            var product = ctx.Product.Add(new Product()
             {
                 ProductName = "LadyShoes"
+            }).Entity;
+
+            ctx.Customer.Add(new Customer()
+            {
+                Name = "Heeeels",
+                Products = product
+                
             });
+
+            
             ctx.SaveChanges();
         }
     }

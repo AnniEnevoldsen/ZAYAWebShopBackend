@@ -11,6 +11,7 @@ namespace Webshop.Core.Entity
         public string Description { get; set; }
         public double Price { get; set; }
         public string Picture { get; set; }
-        //man/woman/sunglasses, as a list???
+        public string Gender { get; set; }
+        public string Type { get; set; }
     }
 }

@@ -26,6 +26,10 @@ namespace Webshop.Core.ApplicationService.implementation
                 throw new InvalidDataException("To create a product you need a description");
             if (product.Picture == "" || product.Picture == null)
                 throw new InvalidDataException("To create a product you need a picture");
+            if (product.Gender == "" || product.Gender == null)
+                throw new InvalidDataException("To create a product you need a gender");
+            if (product.Type == "" || product.Type == null)
+                throw new InvalidDataException("To create a product you need a type");
 
 
             return _ProductRepo.CreateProduct(product);
@@ -56,11 +60,19 @@ namespace Webshop.Core.ApplicationService.implementation
                 throw new InvalidDataException("To update a product you need a description");
             if (product.Picture == "" || product.Picture == null)
                 throw new InvalidDataException("To update a product you need a picture");
+            if (product.Gender == "" || product.Gender == null)
+                throw new InvalidDataException("To update a product you need a gender");
+            if (product.Type == "" || product.Type == null)
+                throw new InvalidDataException("To update a product you need a type");
 
             var productUpdate = ReadProductByID(product.Id);
             productUpdate.ProductName = product.ProductName;
             productUpdate.Description = product.Description;
             productUpdate.Price = product.Price;
+            productUpdate.Gender = product.Gender;
+            productUpdate.Type = product.Type;
+            productUpdate.Picture = product.Picture;
+
 
             return _ProductRepo.UpdateProduct(productUpdate);
         }
