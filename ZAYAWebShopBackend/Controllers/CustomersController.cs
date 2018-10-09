@@ -43,25 +43,32 @@ namespace ZAYAWebShopBackend.Controllers
             }
             catch (Exception e)
             {
-
                 return BadRequest(e.Message);
             }
-            
+
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
         public ActionResult<Customer> Put(int id, [FromBody] Customer customer)
         {
-            return _customerService.UpdateCustomer(customer);
+            try
+            {
+                return _customerService.UpdateCustomer(customer);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public ActionResult<Customer> Delete(int id)
         {
-           var custDelete = _customerService.FindCustomerById(id);
-           _customerService.DeleteCustomer(custDelete);
+            var custDelete = _customerService.FindCustomerById(id);
+            _customerService.DeleteCustomer(custDelete);
 
             return Ok($"Customer with id {id} was deleted");
         }

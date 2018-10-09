@@ -39,14 +39,28 @@ namespace ZAYAWebShopBackend.Controllers
         [HttpPost]
         public ActionResult<Product> Post([FromBody] Product product)
         {
-            return _productService.CreateProduct(product);
+            try
+            {
+                return _productService.CreateProduct(product);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
         public ActionResult<Product> Put(int id, [FromBody] Product product)
         {
-            return _productService.UpdateProduct(product);
+            try
+            {
+                return _productService.UpdateProduct(product);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         // DELETE api/values/5
