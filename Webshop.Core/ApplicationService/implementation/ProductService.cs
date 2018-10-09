@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Webshop.Core.DomainService;
@@ -10,12 +11,22 @@ namespace Webshop.Core.ApplicationService.implementation
     public class ProductService : IProductService
     {
         readonly IProductRepository _ProductRepo;
-        public ProductService(IProductRepository repo) {
-            _ProductRepo = repo;
+        public ProductService(IProductRepository productRepo) {
+            _ProductRepo = productRepo;
+
         }
 
         public Product CreateProduct(Product product)
         {
+            if (product.Price <= 0)
+                throw new InvalidDataException("To create a product you need a price");
+            if (product.ProductName == "" || product.ProductName == null)
+                throw new InvalidDataException("To create a product you need a product name");
+            if (product.Description == "" || product.Description == null)
+                throw new InvalidDataException("To create a product you need a description");
+            if (product.Picture == "" || product.Picture == null)
+                throw new InvalidDataException("To create a product you need a picture");
+
 
             return _ProductRepo.CreateProduct(product);
         }
@@ -37,6 +48,15 @@ namespace Webshop.Core.ApplicationService.implementation
 
         public Product UpdateProduct(Product product)
         {
+            if (product.Price <= 0)
+                throw new InvalidDataException("To update a product you need a price");
+            if (product.ProductName == "" || product.ProductName == null)
+                throw new InvalidDataException("To update a product you need a product name");
+            if (product.Description == "" || product.Description == null)
+                throw new InvalidDataException("To update a product you need a description");
+            if (product.Picture == "" || product.Picture == null)
+                throw new InvalidDataException("To update a product you need a picture");
+
             var productUpdate = ReadProductByID(product.Id);
             productUpdate.ProductName = product.ProductName;
             productUpdate.Description = product.Description;

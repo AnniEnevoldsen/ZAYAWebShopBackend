@@ -10,7 +10,7 @@ namespace Webshop.Core.Entity
         public string ProductName { get; set; }
         public string Description { get; set; }
         public double Price { get; set; }
-        //picture????
+        public string Picture { get; set; }
         //man/woman/sunglasses, as a list???
     }
 }

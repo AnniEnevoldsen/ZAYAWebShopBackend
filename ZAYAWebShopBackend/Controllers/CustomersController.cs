@@ -37,7 +37,16 @@ namespace ZAYAWebShopBackend.Controllers
         [HttpPost]
         public ActionResult<Customer> Post([FromBody] Customer customer)
         {
-            return _customerService.AddCustomer(customer);
+            try
+            {
+                return Ok(_customerService.AddCustomer(customer));
+            }
+            catch (Exception e)
+            {
+
+                return BadRequest(e.Message);
+            }
+            
         }
 
         // PUT api/values/5

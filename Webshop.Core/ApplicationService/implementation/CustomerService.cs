@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Webshop.Core.DomainService;
@@ -17,7 +18,12 @@ namespace Webshop.Core.ApplicationService.implementation
 
         public Customer AddCustomer(Customer cust)
         {
-           return _customerRepository.CreateCustomer(cust);
+            if (cust.Address == "" || cust.Address == null )
+                throw new InvalidDataException("To create a customer you need an address");
+            if (cust.Name == "" || cust.Name == null)
+                throw new InvalidDataException("To create a customer you need a name");
+
+            return _customerRepository.CreateCustomer(cust);
         }
 
         public Customer DeleteCustomer(Customer cust)
@@ -37,6 +43,12 @@ namespace Webshop.Core.ApplicationService.implementation
 
         public Customer UpdateCustomer(Customer cust)
         {
+
+            if (cust.Address == "" || cust.Address == null)
+                throw new InvalidDataException("To update a customer you need an address");
+            if (cust.Name == "" || cust.Name == null)
+                throw new InvalidDataException("To update a customer you need a name");
+
             var editCust = FindCustomerById(cust.Id);
 
             editCust.Id = cust.Id;
