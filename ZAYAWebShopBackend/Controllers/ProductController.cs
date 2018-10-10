@@ -49,6 +49,13 @@ namespace ZAYAWebShopBackend.Controllers
             return _productService.ReadProductByID(id);
         }
 
+        // GET api/values/5
+        [HttpGet("{gender}")]
+        public ActionResult<IEnumerable<Product>> Get(string gender)
+        {
+            return _productService.ReadProductsByGender(gender);
+        }
+
         // POST api/values
         [HttpPost]
         public ActionResult<Product> Post([FromBody] Product product)

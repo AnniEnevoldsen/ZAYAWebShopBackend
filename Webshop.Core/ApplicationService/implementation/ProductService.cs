@@ -66,6 +66,11 @@ namespace Webshop.Core.ApplicationService.implementation
             return _ProductRepo.ReadProducts().ToList();
         }
 
+        public List<Product> ReadProductsByGender(string gender)
+        {
+            return _ProductRepo.ReadProducts().Where(product => product.Gender == gender).ToList();
+        }
+
         public Product UpdateProduct(Product product)
         {
             if (product.Price <= 0)

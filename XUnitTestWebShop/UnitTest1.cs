@@ -98,7 +98,7 @@ namespace XUnitTestWebShop
             var custRepo = new Mock<ICustomerRepository>();
             var productRepo = new Mock<IProductRepository>();
 
-            ICustomerService service = new CustomerService(custRepo.Object);
+            ICustomerService service = new CustomerService(custRepo.Object, productRepo.Object);
 
             var customer = new Customer()
             {
@@ -115,7 +115,7 @@ namespace XUnitTestWebShop
             var custRepo = new Mock<ICustomerRepository>();
             var productRepo = new Mock<IProductRepository>();
 
-            ICustomerService service = new CustomerService(custRepo.Object);
+            ICustomerService service = new CustomerService(custRepo.Object, productRepo.Object);
 
             var customer = new Customer()
             {

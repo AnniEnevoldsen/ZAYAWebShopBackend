@@ -16,6 +16,7 @@ namespace Webshop.Core
         List<Product> ReadProducts();
         Product ReadProductByID(int id);
         List<Product> GetFilteredProducts(Filter filter);
+        List<Product> ReadProductsByGender(string type);
 
         //Update
         Product UpdateProduct(Product product);
