@@ -39,7 +39,24 @@ namespace ZAYAWebShopBackend.Controllers
                 return BadRequest(e.Message);
             }
             // remember to add: ?CurrentPage=1&ItemsPrPage=3 
-            //the pagenumber and itemsprpage can be changed.
+        }
+
+        // GET 
+        [HttpGet("{gender}")]
+        public ActionResult<IEnumerable<Product>> Get([FromQuery] Filter filter, string gender)
+        {
+            try
+            {
+                if (filter.CurrentPage == 0 && filter.ItemsPrPage == 0)
+                {
+                    return Ok(_productService.ReadProductsByGender(gender));
+                }
+                return Ok(_productService.GetFilteredProductsByGender(filter, gender));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            } 
         }
 
         // GET api/values/5
@@ -49,12 +66,7 @@ namespace ZAYAWebShopBackend.Controllers
             return _productService.ReadProductByID(id);
         }
 
-        // GET api/values/5
-        [HttpGet("{gender}")]
-        public ActionResult<IEnumerable<Product>> Get(string gender)
-        {
-            return _productService.ReadProductsByGender(gender);
-        }
+
 
         // POST api/values
         [HttpPost]

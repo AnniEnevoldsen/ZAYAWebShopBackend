@@ -56,6 +56,21 @@ namespace Webshop.Core.ApplicationService.implementation
             return _ProductRepo.ReadProducts(filter).ToList();
         }
 
+        public List<Product> GetFilteredProductsByGender(Filter filter, string gender)
+        {
+            if (filter.CurrentPage < 0 || filter.ItemsPrPage < 0)
+            {
+                throw new InvalidDataException("CurrentPage and ItemsPrPage must be above 0");
+            }
+
+            if ((filter.CurrentPage - 1 * filter.ItemsPrPage) >= _ProductRepo.Count())
+            {
+                throw new InvalidDataException("CurrentPage too high, Index out of bounds");
+            }
+
+            return _ProductRepo.ReadProducts(filter).Where(product => product.Gender == gender).ToList();
+        }
+
         public Product ReadProductByID(int id)
         {
             return _ProductRepo.ReadProductByID(id);
