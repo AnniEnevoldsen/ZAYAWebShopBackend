@@ -59,14 +59,19 @@ namespace ZAYAWebShopBackend.Controllers
             } 
         }
 
+        // GET name of product
+        [HttpGet("{productName}")]
+        public ActionResult<Product> Get(string productName)
+        {
+            return _productService.ReadProductByName(productName);
+        }
+
         // GET api/values/5
         [HttpGet("{id}")]
         public ActionResult<Product> Get(int id)
         {
             return _productService.ReadProductByID(id);
         }
-
-
 
         // POST api/values
         [HttpPost]

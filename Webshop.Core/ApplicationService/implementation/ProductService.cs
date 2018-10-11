@@ -81,6 +81,19 @@ namespace Webshop.Core.ApplicationService.implementation
             return _ProductRepo.ReadProducts().ToList();
         }
 
+        public Product ReadProductByName(string name)
+        {
+            try
+            {
+                return _ProductRepo.ReadProducts().Where(p => p.ProductName == name).FirstOrDefault();
+            }
+            catch (Exception e)
+            {
+                throw new InvalidDataException("Name does not exist");
+            }
+            
+        }
+
         public List<Product> ReadProductsByGender(string gender)
         {
             return _ProductRepo.ReadProducts().Where(product => product.Gender == gender).ToList();
